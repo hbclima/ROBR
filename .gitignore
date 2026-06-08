@@ -1,0 +1,29 @@
+# Credenciais e segredos
+.env
+.env.*
+*.key
+*.pem
+secrets/
+credentials/
+
+# Configurações locais do agente
+.owl/
+agent_config_local.*
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Node (se houver scripts)
+node_modules/
+
+# Backups temporários
+*.bak
+*.tmp
+
+# Arquivos temporários do projeto
+temp/
+
+# Arquivos Word originais (manter apenas .md como fonte de verdade)
+*.docx
