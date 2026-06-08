@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROBR - UI Mockups</title>
+<style>
+:root {
+  --primary: #2D6A4F;
+  --secondary: #40916C;
+  --accent: #D4A373;
+  --health: #22C55E;
+  --health-dim: #166534;
+  --mana: #3B82F6;
+  --mana-dim: #1E40AF;
+  --xp: #A855F7;
+  --xp-dim: #6B21A8;
+  --rare: #3B82F6;
+  --epic: #A855F7;
+  --legendary: #F97316;
+  --uncommon: #22C55E;
+  --common: #6B7280;
+  --bg-dark: #0D1117;
+  --bg-panel: #161B22;
+  --bg-card: #21262D;
+  --bg-elevated: #292E36;
+  --border: #30363D;
+  --border-glow: #40916C44;
+  --text-primary: #E6EDF3;
+  --text-secondary: #8B949E;
+  --gold: #FFD700;
+  --tembira: #DC2626;
+  --karai: #F97316;
+  --paye: #22C55E;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+/* === NAVIGATION === */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--bg-panel);
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  overflow-x: auto;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav-btn {
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.nav-btn:hover { background: var(--bg-elevated); color: var(--text-primary); border-color: var(--primary); }
+.nav-btn.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--secondary);
+  box-shadow: 0 0 12px #2D6A4F66;
+}
+.nav-title {
+  font-weight: 700;
+  font-size: 16px;
+  margin-right: 16px;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.nav-right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+.platform-toggle {
+  display: flex;
+  background: var(--bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.platform-btn {
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.platform-btn.active { background: var(--primary); color: #fff; }
+.platform-btn:hover:not(.active) { color: var(--text-primary); }
+
+/* === SCREENS === */
+.screen {
+  display: none;
+  padding-top: 64px;
+  min-height: 100vh;
+}
+.screen.active { display: block; }
+
+/* === MOCKUP CONTAINER === */
+.mockup-container {
+  width: 100%;
+  max-width 1200px;
+  margin: 24px auto;
+  background: #1a1a2e;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+.mockup-container.pc { max-width: 1200px; aspect-ratio: 16/9; }
+.mockup-container.console { max-width: 1200px; aspect-ratio: 16/9; }
+.mockup-container.mobile { max-width: 400px; aspect-ratio: 9/19.5; }
+.mockup-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: linear-gradient(180deg, #0a1628 0%, #0d2818 30%, #1a0f0a 70%, #0d1117 100%);
+}
+
+/* === TOPO DECORATIVO === */
+.tribal-border-top {
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--secondary), var(--accent), transparent);
+}
+.tribal-border-bottom {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary), var(--accent), var(--primary), transparent);
+}
+
+/* =============================================
+   HUD - PC / CONSOLE
+   ============================================= */
+.hud-hpbar {
+  position: absolute;
+  top: 2%;
+  left: 1%;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.portrait-frame {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: linear-gradient(135deg, var(--bg-card), var(--bg-elevated));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 0 12px #D4A37344;
+  position: relative;
+}
+.portrait-level {
+  position: absolute;
+  bottom: -6px;
+  right: -4px;
+  background: var(--gold);
+  color: #000;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  border: 2px solid var(--bg-dark);
+}
+.bars-container { display: flex; flex-direction: column; gap: 4px; min-width: 200px; }
+.bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+.bar-label .name { color: var(--text-primary); font-weight: 600; font-size: 13px; }
+.bar-label .value { color: var(--text-secondary); font-size: 11px; }
+.bar-outer {
+  height: 14px;
+  background: #00000088;
+  border-radius: 7px;
+  overflow: hidden;
+  border: 1px solid #ffffff15;
+}
+.bar-inner {
+  height: 100%;
+  border-radius: 7px;
+  transition: width 0.5s ease;
+  position: relative;
+}
+.bar-inner::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 40%;
+  background: linear-gradient(180deg, #ffffff30, transparent);
+  border-radius: 7px 7px 0 0;
+}
+.bar-hp { background: linear-gradient(90deg, var(--health-dim), var(--health)); }
+.bar-mp { background: linear-gradient(90deg, var(--mana-dim), var(--mana)); }
+.bar-xp-bar {
+  height: 6px;
+  border-radius: 3px;
+  margin-top: 2px;
+  background: linear-gradient(90deg, var(--xp-dim), var(--xp));
+}
+
+/* Minimap */
+.hud-minimap {
+  position: absolute;
+  top: 2%;
+  right: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+.minimap-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: radial-gradient(circle, #0d2818, #0a0f1a);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 8px #D4A37333;
+}
+.minimap-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0; height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 14px solid #fff;
+  filter: drop-shadow(0 0 3px #fff);
+}
+.minimap-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.minimap-dot.quest { background: var(--gold); box-shadow: 0 0 4px var(--gold); }
+.minimap-dot.npc { background: var(--mana); }
+.minimap-dot.enemy { background: #EF4444; }
+.minimap-dot.party { background: #22D3EE; }
+.minimap-n {
+  position: absolute;
+  top: 4px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.quest-tracker {
+  background: #00000088;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  min-width: 180px;
+  backdrop-filter: blur(4px);
+}
+.quest-tracker-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+.quest-item {
+  font-size: 12px;
+  color: var(--gold);
+  padding: 2px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.quest-item .marker { color: var(--text-secondary); }
+
+/* Hotbar */
+.hud-hotbar {
+  position: absolute;
+  bottom: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  align-items: flex-end;
+}
+.hotbar-slot {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  position: relative;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.hotbar-slot:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 4px 12px #D4A37344; }
+.hotbar-slot.cooldown { opacity: 0.5; }
+.hotbar-slot .slot-key {
+  position: absolute;
+  top: -8px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #000;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+.hotbar-slot .cooldown-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: #000000aa;
+  border-radius: 0 0 6px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #fff;
+  font-weight: 600;
+}
+.hotbar-slot .hotbar-skill-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+/* skill icon colors */
+.skill-fire { background: linear-gradient(135deg, #F9731633, #DC262633); color: #F97316; }
+.skill-ice { background: linear-gradient(135deg, #3B82F633, #22D3EE33); color: #3B82F6; }
+.skill-nature { background: linear-gradient(135deg, #22C55E33, #4ADE8033); color: #22C55E; }
+.skill-buff { background: linear-gradient(135deg, #A855F733, #FFD70033); color: #FFD700; }
+.skill-meele { background: linear-gradient(135deg, #EF444433, #F9731633); color: #EF4444; }
+.skill-heal { background: linear-gradient(135deg, #FFD70033, #22C55E33); color: #22C55E; }
+
+/* Chat */
+.hud-chat {
+  position: absolute;
+  bottom: 4%;
+  left: 1%;
+  width: 300px;
+  background: #00000066;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+}
+.chat-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  padding: 0 8px;
+}
+.chat-tab {
+  padding: 6px 10px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.chat-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.chat-messages {
+  padding: 8px;
+  height: 100px;
+  overflow-y: auto;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.chat-msg { display: flex; gap: 6px; }
+.chat-msg .channel { font-weight: 600; }
+.chat-msg .channel.party { color: #22D3EE; }
+.chat-msg .channel.guild { color: #F97316; }
+.chat-msg .channel.system { color: var(--gold); }
+.chat-msg .channel.world { color: var(--text-secondary); }
+.chat-msg .text { color: var(--text-primary); }
+.chat-input {
+  display: flex;
+  border-top: 1px solid var(--border);
+  padding: 6px 8px;
+  gap: 6px;
+}
+.chat-input input {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: var(--text-primary);
+  font-size: 12px;
+  outline: none;
+}
+
+/* Menu Buttons */
+.hud-menubtns {
+  position: absolute;
+  bottom: 4%;
+  right: 1%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.menubtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.2s;
+  position: relative;
+}
+.menubtn:hover { border-color: var(--accent); background: var(--bg-elevated); }
+.menubtn .tooltip {
+  position: absolute;
+  right: 52px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  white-space: nowrap;
+  display: none;
+  color: var(--text-primary);
+}
+.menubtn:hover .tooltip { display: block; }
+
+/* Buffs */
+.hud-buffs {
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+}
+.buff-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  position: relative;
+}
+.buff-icon .duration {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  font-size: 9px;
+  color: var(--gold);
+  font-weight: 700;
+  text-shadow: 0 0 4px #000;
+}
+
+/* Target frame */
+.hud-target {
+  position: absolute;
+  top: 18%;
+  left: 1%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.target-portrait {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #EF4444;
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.target-info { display: flex; flex-direction: column; gap: 3px; }
+.target-name { font-size: 13px; font-weight: 700; color: #EF4444; }
+.target-bar-outer {
+  width: 180px;
+  height: 12px;
+  background: #00000088;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #ffffff15;
+}
+.target-bar-inner { height: 100%; background: linear-gradient(90deg, #991B1B, #EF4444); border-radius: 6px; }
+
+/* =============================================
+   INVENTORY
+   ============================================= */
+.inv-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr 220px;
+  gap: 16px;
+  padding: 16px;
+  height: 100%;
+}
+.inv-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  position: relative;
+}
+.inv-panel-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+  font-weight: 700;
+}
+.inv-equipment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.inv-equip-slot {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  position: relative;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.inv-equip-slot:hover { border-color: var(--accent); }
+.inv-equip-slot.legendary { border-color: var(--legendary); box-shadow: 0 0 6px #F9731644; }
+.inv-equip-slot.epic { border-color: var(--epic); box-shadow: 0 0 6px #A855F744; }
+.inv-equip-slot.rare { border-color: var(--rare); }
+.inv-equip-slot .slot-label {
+  position: absolute;
+  bottom: 2px;
+  font-size: 8px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+.inv-char-preview {
+  grid-column: 1 / -1;
+  background: var(--bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  margin-bottom: 4px;
+}
+
+/* Inventory grid */
+.inv-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+}
+.inv-slot {
+  aspect-ratio: 1;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.15s;
+  position: relative;
+}
+.inv-slot:hover { border-color: var(--accent); transform: scale(1.05); }
+.inv-slot.empty { opacity: 0.3; }
+.inv-slot.legendary { border-color: var(--legendary); background: linear-gradient(135deg, var(--bg-card), #F9731622); }
+.inv-slot.epic { border-color: var(--epic); background: linear-gradient(135deg, var(--bg-card), #A855F722); }
+.inv-slot.rare { border-color: var(--rare); background: linear-gradient(135deg, var(--bg-card), #3B82F622); }
+.inv-slot.uncommon { border-color: var(--uncommon); }
+.inv-slot .item-count {
+  position: absolute;
+  bottom: 1px;
+  right: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Item detail panel */
+.inv-item-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.inv-item-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  border: 2px solid var(--legendary);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  align-self: center;
+}
+.inv-item-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--legendary);
+  text-align: center;
+}
+.inv-item-type {
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+.inv-item-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+}
+.inv-item-stats .stat-positive { color: #22C55E; }
+.inv-item-stats .stat-negative { color: #EF4444; }
+.inv-item-stats .stat-neutral { color: var(--text-secondary); }
+.inv-item-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  font-style: italic;
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+}
+.inv-currency {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: var(--bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 700;
+}
+.inv-currency .coin-icon { color: var(--gold); }
+.inv-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: auto;
+}
+.inv-action-btn {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+}
+.inv-action-btn:hover { background: var(--bg-elevated); border-color: var(--accent); }
+.inv-action-btn.primary { background: var(--primary); border-color: var(--secondary); }
+.inv-action-btn.danger { border-color: #EF444466; color: #EF4444; }
+
+/* Tabs */
+.inv-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-bottom: 10px;
+}
+.inv-tab {
+  padding: 6px;
+  text-align: center;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-weight: 600;
+}
+.inv-tab.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--secondary);
+}
+
+/* =============================================
+   SKILL TREE
+   ============================================= */
+.skill-layout {
+  display: grid;
+  grid-template-columns: 180px 1fr 220px;
+  gap: 16px;
+  padding: 16px;
+  height: 100%;
+}
+.skill-class-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.skill-class-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.skill-class-tab:hover { border-color: var(--accent); }
+.skill-class-tab.active { border-color: var(--accent); background: var(--bg-elevated); }
+.skill-class-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+.skill-class-info { display: flex; flex-direction: column; }
+.skill-class-name { font-size: 13px; font-weight: 700; }
+.skill-class-role { font-size: 10px; color: var(--text-secondary); }
+.class-tembira { color: var(--tembira); }
+.class-karai { color: var(--karai); }
+.class-paye { color: var(--paye); }
+.bg-tembira { background: linear-gradient(135deg, #DC262633, #7F1D1D33); }
+.bg-karai { background: linear-gradient(135deg, #F9731633, #9A341233); }
+.bg-paye { background: linear-gradient(135deg, #22C55E33, #14532D33); }
+
+/* Skill tree area */
+.skill-tree-area {
+  background: var(--bg-card);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  padding: 16px;
+  position: relative;
+  overflow: auto;
+}
+.skill-tier-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  margin-top: 12px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+.skill-tier-label:first-child { margin-top: 0; }
+.skill-nodes-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  position: relative;
+}
+.skill-node {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid var(--border);
+  background: var(--bg-panel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  flex-shrink: 0;
+}
+.skill-node:hover { transform: scale(1.1); }
+.skill-node.locked { opacity: 0.3; filter: grayscale(1); }
+.skill-node.available {
+  border-color: var(--accent);
+  box-shadow: 0 0 8px #D4A37344;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+.skill-node.learned {
+  border-color: var(--gold);
+  box-shadow: 0 0 10px #FFD70044;
+}
+.skill-node .node-cost {
+  position: absolute;
+  bottom: -10px;
+  font-size: 10px;
+  color: var(--gold);
+  font-weight: 700;
+}
+.skill-node .checkmark {
+  position: absolute;
+  top: -6px; right: -6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #000;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+.skill-connector {
+  height: 2px;
+  background: var(--border);
+  flex: 1;
+  max-width: 30px;
+}
+.skill-connector.active { background: var(--gold); }
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px #D4A37344; }
+  50% { box-shadow: 0 0 16px #D4A37388; }
+}
+
+/* Skill detail */
+.skill-detail-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  border: 2px solid var(--accent);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  align-self: center;
+}
+.skill-detail-name { font-size: 16px; font-weight: 700; text-align: center; }
+.skill-detail-tier { font-size: 11px; color: var(--text-secondary); text-align: center; margin-bottom: 8px; }
+.skill-detail-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+}
+.skill-stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border);
+}
+.skill-stat-label { color: var(--text-secondary); }
+.skill-stat-value { color: var(--text-primary); font-weight: 600; }
+.skill-detail-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  font-style: italic;
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+  margin-bottom: 12px;
+}
+.skill-sp-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  background: var(--bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+.skill-sp-label { font-size: 12px; color: var(--text-secondary); }
+.skill-sp-value { font-size: 16px; color: var(--gold); font-weight: 700; }
+
+/* =============================================
+   CHARACTER STATUS
+   ============================================= */
+.status-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  gap: 16px;
+  padding: 16px;
+  height: 100%;
+}
+.status-char-preview {
+  background: linear-gradient(180deg, #0d2818, #1a0f0a);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  gap: 8px;
+}
+.status-char-model { font-size: 64px; }
+.status-char-name { font-size: 16px; font-weight: 700; }
+.status-char-class { font-size: 12px; color: var(--accent); }
+.status-char-level { font-size: 24px; font-weight: 800; color: var(--gold); }
+.status-xp-bar {
+  width: 100%;
+  height: 8px;
+  background: #00000088;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #ffffff15;
+}
+.status-xp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--xp-dim), var(--xp));
+  border-radius: 4px;
+  width: 67%;
+}
+.status-xp-text { font-size: 10px; color: var(--text-secondary); }
+
+.status-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.stats-section-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--bg-card);
+}
+.stat-row:nth-child(even) { background: var(--bg-panel); }
+.stat-name { color: var(--text-secondary); font-size: 12px; }
+.stat-value { display: flex; align-items: center; gap: 6px; }
+.stat-base { color: var(--text-primary); font-weight: 600; }
+.stat-bonus { color: #22C55E; font-size: 11px; font-weight: 600; }
+.stat-bar-track {
+  width: 80px;
+  height: 6px;
+  background: #00000066;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.stat-bar-fill { height: 100%; background: var(--primary); border-radius: 3px; }
+
+.status-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.status-active-title {
+  padding: 8px;
+  background: linear-gradient(135deg, #FFD70022, #D4A37322);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+}
+.titles-list { display: flex; flex-direction: column; gap: 4px; }
+.title-item {
+  padding: 6px 8px;
+  background: var(--bg-card);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.title-item:hover { border-color: var(--accent); }
+.title-item.earned { color: var(--text-primary); }
+.title-item.locked { color: var(--text-secondary); opacity: 0.5; }
+
+/* =============================================
+   NPC DIALOG
+   ============================================= */
+.dialog-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, transparent 0%, #000000cc 30%);
+  padding-top: 60px;
+}
+.dialog-panel {
+  background: linear-gradient(180deg, var(--bg-panel), var(--bg-dark));
+  border-top: 3px solid var(--accent);
+  border-radius: 16px 16px 0 0;
+  padding: 20px;
+  position: relative;
+}
+.dialog-npc-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.dialog-npc-portrait {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+.dialog-npc-name { font-size: 16px; font-weight: 700; color: var(--gold); }
+.dialog-npc-title { font-size: 11px; color: var(--text-secondary); }
+.dialog-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  padding: 12px;
+  background: #00000044;
+  border-radius: 8px;
+}
+.dialog-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.dialog-option {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dialog-option:hover {
+  background: var(--bg-elevated);
+  border-color: var(--accent);
+  padding-left: 20px;
+}
+.dialog-option .opt-marker {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 14px;
+}
+.dialog-quest-icon {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+  box-shadow: 0 0 8px #FFD70066;
+  animation: bounce 1s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.dialog-tribal-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--accent) 0px,
+    var(--accent) 8px,
+    var(--secondary) 8px,
+    var(--secondary) 16px,
+    var(--primary) 16px,
+    var(--primary) 24px,
+    transparent 24px,
+    transparent 32px
+  );
+}
+
+/* === ANIMATIONS === */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.screen.active { animation: slideIn 0.3s ease; }
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .inv-layout { grid-template-columns: 1fr; }
+  .skill-layout { grid-template-columns: 1fr; }
+  .status-layout { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <span class="nav-title">ROBR UI</span>
+  <button class="nav-btn active" onclick="showScreen('hud')">HUD</button>
+  <button class="nav-btn" onclick="showScreen('inventory')">Inventário</button>
+  <button class="nav-btn" onclick="showScreen('skills')">Skills</button>
+  <button class="nav-btn" onclick="showScreen('status')">Status</button>
+  <button class="nav-btn" onclick="showScreen('dialog')">Diálogo</button>
+  <div class="nav-right">
+    <span style="font-size:11px;color:var(--textsecondary);margin-right:8px;">Plataforma:</span>
+    <div class="platform-toggle">
+      <button class="platform-btn active" onclick="setPlatform('pc', event)">PC</button>
+      <button class="platform-btn" onclick="setPlatform('console', event)">Console</button>
+      <button class="platform-btn" onclick="setPlatform('mobile', event)">Mobile</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HUD SCREEN ===================== -->
+<div id="screen-hud" class="screen active">
+<div class="tribal-border-top"></div>
+<div class="mockup-container pc" id="mockup-hud">
+<div class="tribal-border-bottom"></div>
+<div class="mockup-inner" id="mockup-inner-hud">
+
+  <!-- Target Frame -->
+  <div class="hud-target">
+    <div class="target-portrait">🐊</div>
+    <div class="target-info">
+      <div class="target-name">Boiúna Jovem</div>
+      <div class="target-bar-outer"><div class="target-bar-inner" style="width:72%"></div></div>
+      <div style="font-size:11px;color:var(--text-secondary);">Lv.8 • Elite</div>
+    </div>
+  </div>
+
+  <!-- HP/MP Bars + Portrait -->
+  <div class="hud-hpbar">
+    <div class="portrait-frame">
+      🛡️
+      <div class="portrait-level">24</div>
+    </div>
+    <div class="bars-container">
+      <div class="bar-label">
+        <span class="name">Aruã</span>
+        <span class="value">Tembira Lv.24</span>
+      </div>
+      <div class="bar-outer"><div class="bar-inner bar-hp" style="width:82%"></div></div>
+      <div style="font-size:10px;text-align:right;color:var(--text-secondary);">3.240 / 3.950</div>
+      <div class="bar-outer"><div class="bar-inner bar-mp" style="width:65%"></div></div>
+      <div style="font-size:10px;text-align:right;color:var(--text-secondary);">520 / 800</div>
+      <div class="bar-outer bar-xp-bar"><div class="bar-inner" style="width:45%;background:linear-gradient(90deg,var(--xp-dim),var(--xp))"></div></div>
+    </div>
+  </div>
+
+  <!-- Minimap -->
+  <div class="hud-minimap">
+    <div class="minimap-circle">
+      <div class="minimap-n">N</div>
+      <div class="minimap-center"></div>
+      <div class="minimap-dot quest" style="top:30%;left:60%"></div>
+      <div class="minimap-dot quest" style="top:55%;left:30%"></div>
+      <div class="minimap-dot npc" style="top:40%;left:45%"></div>
+      <div class="minimap-dot enemy" style="top:65%;left:70%"></div>
+      <div class="minimap-dot party" style="top:48%;left:52%"></div>
+    </div>
+    <div class="quest-tracker">
+      <div class="quest-tracker-title">⚔ Missões Ativas</div>
+      <div class="quest-item"><span class="marker">◆</span> As Lendas do Rio Negro</div>
+      <div class="quest-item"><span class="marker">◇</span> Caçar 5 Boiúnas [3/5]</div>
+    </div>
+  </div>
+
+  <!-- Buffs -->
+  <div class="hud-buffs">
+    <div class="buff-icon" title="Escudo de Jabuti">🐢<span class="duration">45s</span></div>
+    <div class="buff-icon" title="Bênção do Rio">🌊<span class="duration">120s</span></div>
+    <div class="buff-icon" title="Fúria Guerreira">⚔️<span class="duration">:30</span></div>
+  </div>
+
+  <!-- Hotbar -->
+  <div class="hud-hotbar">
+    <div class="hotbar-slot"><span class="slot-key">1</span><span class="hotbar-skill-icon skill-meele">⚔️</span></div>
+    <div class="hotbar-slot"><span class="slot-key">2</span><span class="hotbar-skill-icon skill-fire">🔥</span></div>
+    <div class="hotbar-slot"><span class="slot-key">3</span><span class="hotbar-skill-icon skill-ice">❄️</span></div>
+    <div class="hotbar-slot cooldown">
+      <span class="slot-key">4</span>
+      <span class="hotbar-skill-icon skill-nature">🌿</span>
+      <div class="cooldown-overlay" style="height:60%">3.2s</div>
+    </div>
+    <div class="hotbar-slot"><span class="slot-key">5</span><span class="hotbar-skill-icon skill-buff">✨</span></div>
+    <div class="hotbar-slot"><span class="slot-key">6</span><span class="hotbar-skill-icon skill-heal">💚</span></div>
+  </div>
+
+  <!-- Chat -->
+  <div class="hud-chat">
+    <div class="chat-tabs">
+      <div class="chat-tab active">Tudo</div>
+      <div class="chat-tab">Grupo</div>
+      <div class="chat-tab">Guilda</div>
+      <div class="chat-tab">Mundo</div>
+    </div>
+    <div class="chat-messages">
+      <div class="chat-msg"><span class="channel party">[Grupo]</span><span class="text">Alguém pra hunt de Boiúna?</span></div>
+      <div class="chat-msg"><span class="channel system">[Sistema]</span><span class="text">Carta rara obtida!</span></div>
+      <div class="chat-msg"><span class="channel guild">[Guilda]</span><span class="text">Raid às 21h</span></div>
+      <div class="chat-msg"><span class="channel world">[Mundo]</span><span class="text">Boiúna Anciosa spawnou!</span></div>
+      <div class="chat-msg"><span class="channel party">[Grupo]</span><span class="text">Vou pra zona norte</span></div>
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Digite sua mensagem...">
+    </div>
+  </div>
+
+  <!-- Menu Buttons -->
+  <div class="hud-menubtns">
+    <div class="menubtn">🎒<span class="tooltip">Inventário [I]</span></div>
+    <div class="menubtn">⚡<span class="tooltip">Skills [K]</span></div>
+    <div class="menubtn">🗺️<span class="tooltip">Mapa [M]</span></div>
+    <div class="menubtn">📊<span class="tooltip">Status [C]</span></div>
+    <div class="menubtn">⚙️<span class="tooltip">Configurações</span></div>
+  </div>
+
+</div>
+</div>
+</div>
+
+<!-- ===================== INVENTORY SCREEN ===================== -->
+<div id="screen-inventory" class="screen">
+<div class="tribal-border-top"></div>
+<div class="mockup-container pc" id="mockup-inventory">
+<div class="mockup-inner" id="mockup-inner-inventory">
+
+<div class="inv-layout">
+  <!-- Equipment -->
+  <div class="inv-panel">
+    <div class="inv-panel-title">Equipamento</div>
+    <div class="inv-equipment">
+      <div class="inv-char-preview">🛡️</div>
+      <div class="inv-equip-slot epic">🪖<span class="slot-label">Cabeça</span></div>
+      <div class="inv-equip-slot rare">💍<span class="slot-label">Anel</span></div>
+      <div class="inv-equip-slot legendary">👕<span class="slot-label">Torso</span></div>
+      <div class="inv-equip-slot uncommon">🧤<span class="slot-label">Mãos</span></div>
+      <div class="inv-equip-slot rare">👖<span class="slot-label">Pernas</span></div>
+      <div class="inv-equip-slot uncommon">👢<span class="slot-label">Pés</span></div>
+      <div class="inv-equip-slot epic" style="grid-column:1/-1;">⚔️<span class="slot-label">Arma Principal</span></div>
+    </div>
+  </div>
+
+  <!-- Inventory Grid -->
+  <div class="inv-panel" style="display:flex;flex-direction:column;gap:8px;">
+    <div class="inv-tabs">
+      <div class="inv-tab active">Todos</div>
+      <div class="inv-tab">Armas</div>
+      <div class="inv-tab">Armaduras</div>
+      <div class="inv-tab">Consumo</div>
+      <div class="inv-tab">Missão</div>
+      <div class="inv-tab">Misc</div>
+    </div>
+    <div class="inv-grid">
+      <div class="inv-slot uncommon">🗡️</div>
+      <div class="inv-slot rare">🏹</div>
+      <div class="inv-slot legendary">🌿</div>
+      <div class="inv-slot epic">📜</div>
+      <div class="inv-slot uncommon">🧪<span class="item-count">×12</span></div>
+      <div class="inv-slot uncommon">🧪<span class="item-count">×24</span></div>
+      <div class="inv-slot common">🪨<span class="item-count">×99</span></div>
+      <div class="inv-slot common">🪵<span class="item-count">×54</span></div>
+      <div class="inv-slot empty"></div>
+      <div class="inv-slot empty"></div>
+      <div class="inv-slot rare">📿</div>
+      <div class="inv-slot epic">🔮</div>
+      <div class="inv-slot unusual">🗺️</div>
+      <div class="inv-slot uncommon">🍖<span class="item-count">×8</span></div>
+      <div class="inv-slot common">💧<span class="item-count">×15</span></div>
+      <div class="inv-slot empty"></div>
+      <div class="inv-slot rare">🔑</div>
+      <div class="inv-slot uncommon">🧲</div>
+      <div class="inv-slot epic">📕</div>
+      <div class="inv-slot empty"></div>
+      <div class="inv-slot empty"></div>
+      <div class="inv-slot uncommon">🪶</div>
+      <div class="inv-slot common">🦷<span class="item-count">×3</span></div>
+      <div class="inv-slot legendary">👑</div>
+      <div class="inv-slot empty"></div>
+      <div class="inv-slot empty"></div>
+      <div class="inv-slot empty"></div>
+      <div class="inv-slot empty"></div>
+      <div class="inv-slot empty"></div>
+      <div class="inv-slot empty"></div>
+      <div class="inv-slot empty"></div>
+      <div class="inv-slot empty"></div>
+    </div>
+    <div class="inv-currency" style="margin-top:auto;">
+      <span class="coin-icon">🪙</span> Guarani: <span style="color:var(--gold);">12.450</span>
+    </div>
+  </div>
+
+  <!-- Item Detail -->
+  <div class="inv-panel">
+    <div class="inv-panel-title">Detalhes do Item</div>
+    <div class="inv-item-detail">
+      <div class="inv-item-icon" style="border-color:var(--epic);">📜</div>
+      <div class="inv-item-name" style="color:var(--epic);">Pergaminho da Mãe D'Água</div>
+      <div class="inv-item-type">Consumível • Lendário</div>
+      <div class="inv-item-stats">
+        <div><span class="stat-positive">+250 MP</span> restaurados</div>
+        <div><span class="stat-positive">+15%</span> regen de MP por 30s</div>
+        <div><span class="stat-neutral">Nível mínimo:</span> 20</div>
+        <div><span class="stat-neutral">Empilhável:</span> ×10</div>
+      </div>
+      <div class="inv-item-desc">"Pergaminho abençoado pelas águas sagradas do Rio Negro. Dizem que foi escrito pela própria Iara."</div>
+    </div>
+    <div class="inv-actions">
+      <div class="inv-action-btn primary">Usar</div>
+      <div class="inv-action-btn">Empilhar</div>
+      <div class="inv-action-btn">Vender</div>
+      <div class="inv-action-btn danger">Descartar</div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- ===================== SKILL TREE SCREEN ===================== -->
+<div id="screen-skills" class="screen">
+<div class="tribal-border-top"></div>
+<div class="mockup-container pc" id="mockup-skills">
+<div class="mockup-inner" id="mockup-inner-skills">
+
+<div class="skill-layout">
+  <!-- Class Select -->
+  <div class="inv-panel">
+    <div class="inv-panel-title">Classes</div>
+    <div class="skill-class-tabs">
+      <div class="skill-class-tab active" id="class-tembira-tab">
+        <div class="skill-class-icon bg-tembira class-tembira">🛡️</div>
+        <div class="skill-class-info">
+          <div class="skill-class-name class-tembira">Tembira</div>
+          <div class="skill-class-role">Tank / Defensor</div>
+        </div>
+      </div>
+      <div class="skill-class-tab">
+        <div class="skill-class-icon bg-karai class-karai">🔥</div>
+        <div class="skill-class-info">
+          <div class="skill-class-name class-karai">Karaí</div>
+          <div class="skill-class-role">DPS / Caçador</div>
+        </div>
+      </div>
+      <div class="skill-class-tab">
+        <div class="skill-class-icon bg-paye class-paye">🌿</div>
+        <div class="skill-class-info">
+          <div class="skill-class-name class-paye">Payé</div>
+          <div class="skill-class-role">Suporte / Curandeiro</div>
+        </div>
+      </div>
+    </div>
+    <div class="inv-panel-title" style="margin-top:12px;">Atributos</div>
+    <div id="class-desc" style="font-size:12px;color:var(--text-secondary);line-height:1.6;">
+      Guardião das florestas. Absorve dano para proteger o grupo. Força e vitalidade são essenciais.
+    </div>
+  </div>
+
+  <!-- Skill Tree -->
+  <div class="skill-tree-area" style="padding:20px;">
+    <div class="skill-tier-label">⬥ Básico (Lv. 1-10)</div>
+    <div class="skill-nodes-row" style="margin-bottom:20px;">
+      <div class="skill-node learned" title="Golpe de Escudo"><span>⚔️</span><div class="checkmark">✓</div></div>
+      <div class="skill-connector active"></div>
+      <div class="skill-node learned" title="Provocar"><span>😤</span><div class="checkmark">✓</div></div>
+      <div class="skill-connector active"></div>
+      <div class="skill-node available" title="Escudo de Jabuti"><span>🐢</span><div class="node-cost">3 SP</div></div>
+      <div class="skill-connector"></div>
+      <div class="skill-node locked"><span>💪</span></div>
+    </div>
+    <div class="skill-tier-label">⬥ Avançado (Lv. 11-25)</div>
+    <div class="skill-nodes-row" style="margin-bottom:20px;">
+      <div class="skill-node locked" title="Muralha Viva"><span>🌳</span></div>
+      <div class="skill-connector"></div>
+      <div class="skill-node locked" title="Fúria da Terra"><span>🌋</span></div>
+      <div class="skill-connector"></div>
+      <div class="skill-node locked" title="Rugido Ancestral"><span>🦁</span></div>
+    </div>
+    <div class="skill-tier-label">⬥ Mestre (Lv. 26+)</div>
+    <div class="skill-nodes-row">
+      <div class="skill-node locked" title="Encarnação de Tupã"><span>⚡</span></div>
+      <div class="skill-connector"></div>
+      <div class="skill-node locked" title="Proteção Absoluta"><span>🛡️</span></div>
+    </div>
+  </div>
+
+  <!-- Skill Detail -->
+  <div class="inv-panel">
+    <div class="inv-panel-title">Skill Selecionada</div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="skill-detail-icon">🐢</div>
+      <div class="skill-detail-name" style="color:var(--accent);">Escudo de Jabuti</div>
+      <div class="skill-detail-tier">Básico • Requer Lv.8</div>
+      <div class="skill-detail-stats">
+        <div class="skill-stat-row"><span class="skill-stat-label">Mana</span><span class="skill-stat-value" style="color:var(--mana);">80</span></div>
+        <div class="skill-stat-row"><span class="skill-stat-label">Cooldown</span><span class="skill-stat-value">12s</span></div>
+        <div class="skill-stat-row"><span class="skill-stat-label">Absorção</span><span class="skill-stat-value" style="color:var(--health);">25% do HP max</span></div>
+        <div class="skill-stat-row"><span class="skill-stat-label">Duração</span><span class="skill-stat-value">8s</span></div>
+        <div class="skill-stat-row"><span class="skill-stat-label">Custo</span><span class="skill-stat-value" style="color:var(--gold);">3 SP</span></div>
+      </div>
+      <div class="skill-detail-desc">Invoca o espírito do Jabuti ancestral. Cria um escudo que absorve 25% do HP máximo como dano por 8 segundos.</div>
+      <div class="skill-sp-bar">
+        <span class="skill-sp-label">Skill Points</span>
+        <span class="skill-sp-value">5 SP</span>
+      </div>
+      <div class="inv-action-btn primary">Aprender Skill</div>
+      <div class="inv-action-btn">Resetar Árvore</div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- ===================== CHARACTER STATUS SCREEN ===================== -->
+<div id="screen-status" class="screen">
+<div class="tribal-border-top"></div>
+<div class="mockup-container pc" id="mockup-status">
+<div class="mockup-inner" id="mockup-inner-status">
+
+<div class="status-layout">
+  <!-- Character Preview -->
+  <div class="status-char-preview">
+    <div class="status-char-model">🛡️</div>
+    <div class="status-char-name">Aruã</div>
+    <div class="status-char-class">Tembira • Guardião</div>
+    <div class="status-char-level">Lv. 24</div>
+    <div class="status-xp-bar"><div class="status-xp-fill"></div></div>
+    <div class="status-xp-text">67% para Lv.25 (12.400 / 18.500 XP)</div>
+    <div style="margin-top:auto;font-size:11px;color:var(--text-secondary);">
+      <div>⚔ Poder Total: <span style="color:var(--gold);font-weight:700;">1.847</span></div>
+      <div>🏆 Título Ativo: <span style="color:var(--accent);">Domador de Boiúnas</span></div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="status-stats">
+    <div class="inv-panel" style="height:100%;overflow-y:auto;">
+      <div class="inv-panel-title">Atributos</div>
+      <div class="stats-section-title">Primários</div>
+      <div class="stat-row"><span class="stat-name">💪 Força</span><span class="stat-value"><span class="stat-base">48</span><span class="stat-bonus">+12</span></span></div>
+      <div class="stat-row"><span class="stat-name">🏃 Agilidade</span><span class="stat-value"><span class="stat-base">22</span><span class="stat-bonus">+5</span></span></div>
+      <div class="stat-row"><span class="stat-name">❤️ Vitalidade</span><span class="stat-value"><span class="stat-base">56</span><span class="stat-bonus">+18</span></span></div>
+      <div class="stat-row"><span class="stat-name">🧠 Inteligência</span><span class="stat-value"><span class="stat-base">15</span><span class="stat-bonus">+3</span></span></div>
+      <div class="stat-row"><span class="stat-name">🎯 Destreza</span><span class="stat-value"><span class="stat-base">30</span><span class="stat-bonus">+8</span></span></div>
+      <div class="stat-row"><span class="stat-name">🍀 Sorte</span><span class="stat-value"><span class="stat-base">18</span><span class="stat-bonus">+4</span></span></div>
+      <div class="stats-section-title" style="margin-top:12px;">Derivados</div>
+      <div class="stat-row"><span class="stat-name">⚔ Ataque</span><span class="stat-value"><span class="stat-base">342</span><span class="stat-bonus">+58</span></span></div>
+      <div class="stat-row"><span class="stat-name">🛡 Defesa</span><span class="stat-value"><span class="stat-base">520</span><span class="stat-bonus">+134</span></span></div>
+      <div class="stat-row"><span class="stat-name">✨ M. Ataque</span><span class="stat-value"><span class="stat-base">85</span></span></div>
+      <div class="stat-row"><span class="stat-name">🔮 M. Defesa</span><span class="stat-value"><span class="stat-base">210</span><span class="stat-bonus">+45</span></span></div>
+      <div class="stat-row"><span class="stat-name">❤ HP Máximo</span><span class="stat-value"><span class="stat-base">3.950</span></span></div>
+      <div class="stat-row"><span class="stat-name">💧 MP Máximo</span><span class="stat-value"><span class="stat-base">800</span></span></div>
+      <div class="stat-row"><span class="stat-name">💨 Velocidade</span><span class="stat-value"><span class="stat-base">100</span><span class="stat-bonus">+15</span></span></div>
+      <div class="stat-row"><span class="stat-name">💥 Crítico</span><span class="stat-value"><span class="stat-base">8%</span><span class="stat-bonus">+3%</span></span></div>
+      <div class="stat-row"><span class="stat-name">🛡 Aggro</span><span class="stat-value"><span class="stat-base">180</span><span class="stat-bonus">+45</span></span></div>
+    </div>
+  </div>
+
+  <!-- Titles & Achievements -->
+  <div class="status-titles">
+    <div class="inv-panel" style="height:100%;display:flex;flex-direction:column;gap:8px;">
+      <div class="inv-panel-title">Títulos & Conquistas</div>
+      <div class="status-active-title">🏆 Domador de Boiúnas</div>
+      <div class="titles-list">
+        <div class="title-item earned">🐊 Primeiro Sangue</div>
+        <div class="title-item earned">🌊 Navegante do Rio Negro</div>
+        <div class="title-item earned">⚔ Veterano de Caça</div>
+        <div class="title-item earned">🛡 Escudo Inquebrável</div>
+        <div class="title-item earned">💀 Caçador de Lendas</div>
+        <div class="title-item locked">??? Lenda Viva</div>
+        <div class="title-item locked">??? Protetor Ancestral</div>
+        <div class="title-item locked">??? Mestre das Ervas</div>
+      </div>
+      <div style="margin-top:auto;">
+        <div class="stats-section-title">Coleção</div>
+        <div style="font-size:12px;color:var(--text-secondary);">
+          📜 Cartas: <span style="color:var(--text-primary);">3 / 48</span><br>
+          🐾 Bestiário: <span style="color:var(--text-primary);">12 / 32</span><br>
+          🌿 Receitas: <span style="color:var(--text-primary);">8 / 24</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- ===================== DIALOG SCREEN ===================== -->
+<div id="screen-dialog" class="screen">
+<div class="tribal-border-top"></div>
+<div class="mockup-container pc" id="mockup-dialog">
+<div class="mockup-inner" id="mockup-inner-dialog" style="background:linear-gradient(180deg,#0a1628 0%,#0d2818 40%,#1a2a1a 100%);">
+
+  <!-- Background scene hint -->
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:120px;opacity:0.08;">🌊</div>
+
+  <!-- Dialog Overlay -->
+  <div class="dialog-overlay" style="position:absolute;bottom:0;left:0;right:0;">
+    <div class="dialog-panel">
+      <div class="dialog-tribal-edge"></div>
+      <div class="dialog-quest-icon">!</div>
+      <div class="dialog-npc-info">
+        <div class="dialog-npc-portrait">🧙</div>
+        <div>
+          <div class="dialog-npc-name">Pajé Itamar</div>
+          <div class="dialog-npc-title">Ancião da Aldeia • Quest Giver</div>
+        </div>
+      </div>
+      <div class="dialog-text">
+        "Jovem guerreiro... as águas do Rio Negro estão perturbadas. A Boiúna Anciosa despertou de seu sono ancestral e ameaça nossa aldeia. Você possui a coragem necessária para enfrentar essa criatura?"
+      </div>
+      <div class="dialog-options">
+        <div class="dialog-option"><span class="opt-marker">❶</span> Aceitar missão: "As Lendas do Rio Negro"</div>
+        <div class="dialog-option"><span class="opt-marker">❷</span> "Conte-me mais sobre a Boiúna..."</div>
+        <div class="dialog-option"><span class="opt-marker">❸</span> "Preciso me preparar primeiro."</div>
+        <div class="dialog-option"><span class="opt-marker">❹</span> [Comerciar] "Você tem itens à venda?"</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+
+<script>
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function setPlatform(platform, e) {
+  document.querySelectorAll('.platform-btn').forEach(b => b.classList.remove('active'));
+  if (e && e.target) e.target.classList.add('active');
+
+  const suffix = '-inner-' + platform;
+  // Update all mockup containers
+  ['hud','inventory','skills','status','dialog'].forEach(name => {
+    const el = document.getElementById('mockup-' + name);
+    if (el) {
+      el.className = 'mockup-container ' + platform;
+    }
+  });
+}
+
+// Skill node interaction
+document.querySelectorAll('.skill-node').forEach(node => {
+  node.addEventListener('click', function() {
+    document.querySelectorAll('.skill-node').forEach(n => n.classList.remove('selected'));
+    this.classList.add('selected');
+  });
+});
+
+// Class tab switching
+document.querySelectorAll('.skill-class-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.skill-class-tab').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// Inventory tab switching
+document.querySelectorAll('.inv-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.inv-tab').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// Dialog option interaction
+document.querySelectorAll('.dialog-option').forEach(opt => {
+  opt.addEventListener('click', function() {
+    this.style.background = 'var(--primary)';
+    this.style.borderColor = 'var(--secondary)';
+    setTimeout(() => {
+      this.style.background = '';
+      this.style.borderColor = '';
+    }, 300);
+  });
+});
+</script>
+</body>
+</html>
