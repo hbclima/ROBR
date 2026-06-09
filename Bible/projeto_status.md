@@ -9,7 +9,7 @@
 
 **O que é:** MMORPG no Roblox inspirado em Ragnarok Online (RO), com lore baseada no folclore brasileiro.
 **Plataforma:** Roblox Studio + Luau (server-authoritative, multiplayer-first).
-**Tema:** Biomas e entidades do folclore brasileiro (Tupi-Guarani como base cultural).
+**Tema:** Biomas e entidades do folclore brasileiro (Tupã-Y como base cultural, Angá como força de corrupção).
 **Público:** Inicialmente a dupla desenvolvedor (pai e filho); potencial expansão para jogadores Roblox.
 **Diferencial:** Mecânicas core de RO (atributos, classes, grind, drops, party) + identidade cultural brasileira.
 
@@ -116,7 +116,7 @@ onedrive_hermes:ROBR/
 - [x] Revisão de consistência: 15/15 mobs MVP aprovados
 - [x] 3 classes definidas e validadas (Tembira, Karaí, Payé)
 - [x] Fase 0.B — Lore e Identidade (bestário, nomenclatura, guia visual)
-- [x] Moeda atualizada: Zeny → Guarani (todos os documentos)
+- [x] Moeda atualizada: Zeny → Guarani → Wira'i (todos os documentos)
 - [x] **Fase 1 — Fundação Técnica** (implementação Roblox Studio)
   - Estrutura de pastas completa (ReplicatedStorage, ServerScriptService, StarterPlayerScripts, Workspace)
   - 11 ModuleScripts criados (MobsConfig, ClassesConfig, Formulas, DamageCalculator, AISystem, SpawnSystem, CombatManager, DataController, PartyManager + skeletons)
@@ -136,21 +136,21 @@ onedrive_hermes:ROBR/
 
 | ID | Nome | Nível | HP | Elem | Raridade | Mapa |
 |---|---|---|---|---|---|---|
-| MOB_001 | Sapo Cururu | 1–6 | 120 | água | comum | 1 |
-| MOB_002 | Cobra-d'Água | 5–10 | 210 | água | comum | 1–2 |
-| MOB_015 | Capivara | 1–5 | 80 | neutro | comum | 1 |
-| MOB_003 | Mãe-da-Mata | 10–15 | 350 | terra | incomum | 2 |
-| MOB_011 | Boto Cor-de-Rosa | 12–15 | 380 | água | raro | 2 |
-| MOB_013 | Corpo Seco | 10–14 | 320 | sombra | raro | 2 |
-| MOB_004 | Boitatá | 15–20 | 520 | fogo | incomum | 3 |
-| MOB_012 | Mula Sem Cabeça | 18–22 | 600 | fogo | elite | 3 |
-| MOB_016 | Jacaré-Açu | 16–20 | 600 | neutro | raro | 3 |
-| MOB_005 | Curupira | 20–25 | 800 | terra | raro | 4 |
-| MOB_008 | Anhangá | 25–30 | 700 | sombra | raro | 4 |
-| MOB_014 | Onça-Pintada | 20–25 | 900 | neutro | raro | 4 |
-| MOB_006 | Saci Pererê | 25–30 | 900 | vento | elite | 5 |
-| MOB_009 | Jurupari | 25–30 | 900 | vento | elite | 5 |
-| MOB_007 | Boiúna | 30 | 4200 | água | chefe | 6 |
+| MOB_001 | Sapo Cururu | 1–6 | 120 | água | comum | Ybirá-Puera |
+| MOB_002 | Cobra-d'Água | 5–10 | 210 | água | comum | Ybirá-Puera / Mãe-da-Mata |
+| MOB_015 | Capivara | 1–5 | 80 | neutro | comum | Ybirá-Puera |
+| MOB_003 | Mãe-da-Mata | 10–15 | 350 | terra | incomum | Floresta de Mãe-da-Mata |
+| MOB_011 | Boto Cor-de-Rosa | 12–15 | 380 | água | raro | Floresta de Mãe-da-Mata |
+| MOB_013 | Corpo Seco | 10–14 | 320 | sombra | raro | Floresta de Mãe-da-Mata |
+| MOB_004 | Boitatá | 15–20 | 520 | fogo | incomum | Tavy-Katu |
+| MOB_012 | Mula Sem Cabeça | 18–22 | 600 | fogo | elite | Tavy-Katu |
+| MOB_016 | Jacaré-Açu | 16–20 | 600 | neutro | raro | Tavy-Katu |
+| MOB_005 | Curupira | 20–25 | 800 | terra | raro | Tupã-Mbara |
+| MOB_008 | Anhangá | 25–30 | 700 | sombra | raro | Tupã-Mbara |
+| MOB_014 | Onça-Pintada | 20–25 | 900 | neutro | raro | Tupã-Mbara |
+| MOB_006 | Saci Sombrio | 25–30 | 950 | vento corrompido | elite | Templo nas Nuvens |
+| MOB_009 | Jurupari | 25–30 | 900 | vento | elite | Templo nas Nuvens |
+| MOB_007 | Boiúna | 30 | 4200 | água | chefe | Ygara-Mbya |
 
 ### Hold:
 | MOB_010 | Tupã-Jaguaçu | 30 | 3500 | sagrado | chefe | hold |
