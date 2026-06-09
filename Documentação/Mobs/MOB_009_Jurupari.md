@@ -60,7 +60,7 @@
 
 ## Drops
 
-| id_item | nome_item | tipo | drop_chance_pct | valor_npc_guarani |
+| id_item | nome_item | tipo | drop_chance_pct | valor_npc_wirai |
 |---|---|---|---|---|
 | ITEM_026 | Carta — Jurupari | especial | 0.5 | 450 |
 | ITEM_027 | Bastão do Trovão | equipamento | 5.5 | 120 |

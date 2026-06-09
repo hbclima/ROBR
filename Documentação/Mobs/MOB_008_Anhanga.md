@@ -62,7 +62,7 @@
 
 | id_item | nome_item | tipo | drop_chance_pct | valor_npc_wirai |
 |---|---|---|---|---|
-| ITEM_021 | Carta — Anhangá | especial | 1.0 | 380 |
+| ITEM_021 | Carta — Anhangá | especial | 0.5 | 380 |
 | ITEM_022 | Manto do Submundo | equipamento | 5.0 | 90 |
 | ITEM_023 | Essência de Espírito | consumível | 25.0 | 15 |
 | ITEM_024 | Fumaça Fantasma | comum | 50.0 | 3 |

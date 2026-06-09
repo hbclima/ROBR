@@ -61,7 +61,7 @@
 
 ## Drops
 
-| id_item | nome_item | tipo | drop_chance_pct | valor_npc_guarani |
+| id_item | nome_item | tipo | drop_chance_pct | valor_npc_wirai |
 |---|---|---|---|---|
 | ITEM_046 | Carta — Boiúna | especial | 0.5 | 1800 |
 | ITEM_047 | Escama de Boiúna | equipamento | 1.2 | 900 |
