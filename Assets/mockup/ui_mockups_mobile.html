@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ROBR - UI Mobile Mockups</title>
+<style>
+:root {
+  --primary: #2D6A4F;
+  --secondary: #40916C;
+  --accent: #D4A373;
+  --health: #22C55E;
+  --health-dim: #166534;
+  --mana: #3B82F6;
+  --mana-dim: #1E40AF;
+  --xp: #A855F7;
+  --bg-dark: #0D1117;
+  --bg-panel: #161B22;
+  --bg-card: #21262D;
+  --bg-elevated: #292E36;
+  --border: #30363D;
+  --text-primary: #E6EDF3;
+  --text-secondary: #8B949E;
+  --gold: #FFD700;
+}
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 16px;
+  gap: 24px;
+}
+h1 { font-size: 18px; color: var(--accent); text-align: center; margin-bottom: 4px; }
+h2 { font-size: 13px; color: var(--text-secondary); text-align: center; font-weight: 400; margin-bottom: 16px; }
+.frame {
+  width: 375px;
+  height: 812px;
+  background: #1a1a2e;
+  border-radius: 40px;
+  border: 3px solid #333;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 40px #00000088;
+}
+.frame-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: linear-gradient(180deg, #0a1628, #0d2818 40%, #1a0f0a 80%, #0d1117);
+  overflow: hidden;
+}
+.notch {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 28px;
+  background: #000;
+  border-radius: 0 0 20px 20px;
+  z-index: 50;
+}
+.home-bar {
+  position: absolute;
+  bottom: 8px; left: 50%;
+  transform: translateX(-50%);
+  width: 134px;
+  height: 5px;
+  background: #ffffff44;
+  border-radius: 3px;
+  z-index: 50;
+}
+
+.label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
+  margin-bottom: 8px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* ========== MOBILE HUD ========== */
+.m-hud-top {
+  position: absolute;
+  top: 36px;
+  left: 8px;
+  right: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.m-portrait {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  position: relative;
+}
+.m-portrait-lv {
+  position: absolute;
+  bottom: -4px; right: -4px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #000;
+  font-size: 9px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-dark);
+}
+.m-bars {
+  flex: 1;
+  margin-left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.m-bar-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.m-bar-outer {
+  height: 11px;
+  background: #00000088;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #ffffff15;
+}
+.m-bar-inner { height: 100%; border-radius: 6px; }
+.m-bar-hp { background: linear-gradient(90deg, var(--health-dim), var(--health)); }
+.m-bar-mp { background: linear-gradient(90deg, var(--mana-dim), var(--mana)); }
+.m-bar-xp { height: 5px; background: linear-gradient(90deg, #6B21A8, var(--xp)); margin-top: 2px; border-radius: 3px; }
+
+.m-minimap {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: radial-gradient(circle, #0d2818, #0a0f1a);
+  position: relative;
+  flex-shrink: 0;
+}
+.m-minimap-n {
+  position: absolute; top: 2px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px; font-weight: 700; color: var(--accent);
+}
+.m-minimap-arrow {
+  position: absolute; top:50%; left:50%;
+  transform: translate(-50%,-50%);
+  width:0; height:0;
+  border-left:4px solid transparent; border-right:4px solid transparent;
+  border-bottom:10px solid #fff;
+}
+
+/* Touch hotbar - two rows of 3 */
+.m-hotbar {
+  position: absolute;
+  bottom: 24%;
+  right: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.m-hotbar-row {
+  display: flex;
+  gap: 6px;
+}
+.m-slot {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: #00000088;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  position: relative;
+}
+.m-slot:active { border-color: var(--accent); transform: scale(0.95); }
+.m-slot.cd { opacity: 0.4; }
+.m-slot .cd-text {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: #000000bb;
+  text-align: center;
+  font-size: 10px;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0 0 10px 10px;
+  padding: 2px 0;
+}
+
+/* Action buttons - left side */
+.m-actions {
+  position: absolute;
+  bottom: 24%;
+  left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.m-abtn {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: #00000088;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+.m-abtn:active { border-color: var(--accent); transform: scale(0.95); }
+
+/* Menu bar - bottom */
+.m-menubar {
+  position: absolute;
+  bottom: 36px;
+  left: 8px;
+  right: 8px;
+  display: flex;
+  justify-content: space-around;
+  background: #00000066;
+  border-radius: 16px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+}
+.m-menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+.m-menu-icon { font-size: 18px; }
+.m-menu-label { font-size: 9px; color: var(--text-secondary); }
+.m-menu-item.active .m-menu-label { color: var(--accent); }
+
+/* Buff bar */
+.m-buffs {
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 3px;
+}
+.m-buff {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: #00000066;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  position: relative;
+}
+.m-buff .dur {
+  position: absolute;
+  bottom: -1px; right: 0;
+  font-size: 8px;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* Target */
+.m-target {
+  position: absolute;
+  top: 100px;
+  left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.m-target-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #EF4444;
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+.m-target-name { font-size: 11px; font-weight: 700; color: #EF4444; }
+.m-target-bar { width: 100px; height: 8px; background: #00000088; border-radius: 4px; overflow: hidden; }
+.m-target-bar-fill { height: 100%; background: linear-gradient(90deg, #991B1B, #EF4444); border-radius: 4px; width: 60%; }
+
+/* ========== MOBILE INVENTORY ========== */
+.m-inv-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 44px 8px 36px;
+  gap: 8px;
+}
+.m-inv-char {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-panel);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 10px;
+}
+.m-inv-model { font-size: 40px; }
+.m-inv-equip-row {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+.m-inv-equip-slot {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+.m-inv-tabs {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+}
+.m-inv-tabs::-webkit-scrollbar { display: none; }
+.m-inv-tab {
+  padding: 6px 12px;
+  font-size: 10px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  font-weight: 600;
+}
+.m-inv-tab.active { background: var(--primary); color: #fff; border-color: var(--secondary); }
+.m-inv-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+.m-inv-slot {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  position: relative;
+}
+.m-inv-slot.empty { opacity: 0.2; }
+.m-inv-slot.count::after {
+  content: '×12';
+  position: absolute;
+  bottom: 0; right: 2px;
+  font-size: 8px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.m-inv-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--bg-panel);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: 12px;
+}
+.m-inv-coin { color: var(--gold); font-weight: 700; }
+.m-inv-close {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ========== MOBILE SKILLS ========== */
+.m-skill-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 44px 8px 36px;
+  gap: 8px;
+}
+.m-class-tabs {
+  display: flex;
+  gap: 6px;
+}
+.m-class-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 4px;
+  border-radius: 10px;
+  border: 2px solid var(--border);
+  background: var(--bg-card);
+  cursor: pointer;
+}
+.m-class-tab.active { border-color: var(--accent); background: var(--bg-elevated); }
+.m-class-tab .icon { font-size: 22px; }
+.m-class-tab .name { font-size: 11px; font-weight: 700; }
+.m-class-tab .role { font-size: 9px; color: var(--text-secondary); }
+.m-skill-scroll {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 12px;
+}
+.m-tier-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-secondary);
+  margin: 12px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+.m-tier-label:first-child { margin-top: 0; }
+.m-skill-node-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.m-skill-node {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 3px solid var(--border);
+  background: var(--bg-panel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  position: relative;
+  flex-shrink: 0;
+}
+.m-skill-node.available { border-color: var(--accent); box-shadow: 0 0 8px #D4A37344; }
+.m-skill-node.learned { border-color: var(--gold); box-shadow: 0 0 6px #FFD70044; }
+.m-skill-node.locked { opacity: 0.3; filter: grayscale(1); }
+.m-connector { height: 2px; background: var(--border); flex: 1; max-width: 20px; }
+.m-connector.active { background: var(--gold); }
+.m-skill-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--bg-panel);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+.m-sp-text { font-size: 12px; color: var(--text-secondary); }
+.m-sp-val { color: var(--gold); font-weight: 700; font-size: 16px; }
+.m-learn-btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ========== MOBILE DIALOG ========== */
+.m-dialog-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, transparent, #000000dd 20%);
+  padding-top: 40px;
+}
+.m-dialog-panel {
+  background: linear-gradient(180deg, var(--bg-panel), var(--bg-dark));
+  border-top: 3px solid var(--accent);
+  border-radius: 20px 20px 0 0;
+  padding: 16px;
+}
+.m-dialog-npc {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.m-dialog-portrait {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+.m-dialog-name { font-size: 14px; font-weight: 700; color: var(--gold); }
+.m-dialog-title { font-size: 10px; color: var(--text-secondary); }
+.m-dialog-text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  padding: 10px;
+  background: #00000044;
+  border-radius: 8px;
+}
+.m-dialog-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.m-dialog-opt {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+}
+.m-dialog-opt:active { background: var(--primary); border-color: var(--secondary); }
+.m-opt-marker { color: var(--accent); font-weight: 700; font-size: 14px; }
+.m-quest-badge {
+  position: absolute;
+  top: -10px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 800;
+  box-shadow: 0 0 8px #FFD70066;
+}
+</style>
+</head>
+<body>
+
+<h1>ROBR - UI Mobile Mockups</h1>
+<h2>iPhone X/11/12 — 375×812pt • Touch-optimized • Min 44px touch targets</h2>
+
+<!-- ===== MOBILE HUD ===== -->
+<div class="label">① HUD Principal</div>
+<div class="frame">
+  <div class="frame-inner">
+    <div class="notch"></div>
+    <div class="home-bar"></div>
+
+    <!-- Top area -->
+    <div class="m-hud-top">
+      <div class="m-portrait">🛡️<div class="m-portrait-lv">24</div></div>
+      <div class="m-bars">
+        <div class="m-bar-label">Aruã</div>
+        <div class="m-bar-outer"><div class="m-bar-inner m-bar-hp" style="width:82%"></div></div>
+        <div class="m-bar-outer"><div class="m-bar-inner m-bar-mp" style="width:65%"></div></div>
+        <div class="m-bar-outer"><div class="m-bar-inner m-bar-xp" style="width:45%"></div></div>
+      </div>
+      <div class="m-minimap">
+        <div class="m-minimap-n">N</div>
+        <div class="m-minimap-arrow"></div>
+      </div>
+    </div>
+
+    <!-- Buffs -->
+    <div class="m-buffs">
+      <div class="m-buff">🐢<span class="dur">45</span></div>
+      <div class="m-buff">🌊<span class="dur">120</span></div>
+      <div class="m-buff">⚔️<span class="dur">30</span></div>
+    </div>
+
+    <!-- Target -->
+    <div class="m-target">
+      <div class="m-target-icon">🐊</div>
+      <div>
+        <div class="m-target-name">Boiúna Jovem</div>
+        <div class="m-target-bar"><div class="m-target-bar-fill"></div></div>
+      </div>
+    </div>
+
+    <!-- Action buttons (left) -->
+    <div class="m-actions">
+      <div class="m-abtn">🎒</div>
+      <div class="m-abtn">⚡</div>
+      <div class="m-abtn">📊</div>
+    </div>
+
+    <!-- Hotbar (right) -->
+    <div class="m-hotbar">
+      <div class="m-hotbar-row">
+        <div class="m-slot">⚔️</div>
+        <div class="m-slot">🔥</div>
+        <div class="m-slot">❄️</div>
+      </div>
+      <div class="m-hotbar-row">
+        <div class="m-slot cd">🌿<div class="cd-text">3.2s</div></div>
+        <div class="m-slot">✨</div>
+        <div class="m-slot">💚</div>
+      </div>
+    </div>
+
+    <!-- Bottom menu bar -->
+    <div class="m-menubar">
+      <div class="m-menu-item active"><span class="m-menu-icon">🏠</span><span class="m-menu-label">Mapa</span></div>
+      <div class="m-menu-item"><span class="m-menu-icon">🎒</span><span class="m-menu-label">Inv</span></div>
+      <div class="m-menu-item"><span class="m-menu-icon">⚡</span><span class="m-menu-label">Skills</span></div>
+      <div class="m-menu-item"><span class="m-menu-icon">📊</span><span class="m-menu-label">Status</span></div>
+      <div class="m-menu-item"><span class="m-menu-icon">⚙️</span><span class="m-menu-label">Config</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MOBILE INVENTORY ===== -->
+<div class="label">② Inventário</div>
+<div class="frame">
+  <div class="frame-inner">
+    <div class="notch"></div>
+    <div class="home-bar"></div>
+    <div class="m-inv-layout">
+      <div class="m-inv-char">
+        <div class="m-inv-model">🛡️</div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:700;">Aruã • Lv.24</div>
+          <div style="font-size:11px;color:var(--text-secondary);">Tembira • Guarani: <span style="color:var(--gold);">12.450</span></div>
+        </div>
+        <div class="m-inv-equip-row">
+          <div class="m-inv-equip-slot">🪖</div>
+          <div class="m-inv-equip-slot">⚔️</div>
+          <div class="m-inv-equip-slot">💍</div>
+        </div>
+      </div>
+      <div class="m-inv-tabs">
+        <div class="m-inv-tab active">Todos</div>
+        <div class="m-inv-tab">Armas</div>
+        <div class="m-inv-tab">Armad.</div>
+        <div class="m-inv-tab">Consumo</div>
+        <div class="m-inv-tab">Missão</div>
+      </div>
+      <div class="m-inv-grid">
+        <div class="m-inv-slot">🗡️</div>
+        <div class="m-inv-slot">🏹</div>
+        <div class="m-inv-slot">🌿</div>
+        <div class="m-inv-slot">📜</div>
+        <div class="m-inv-slot count">🧪</div>
+        <div class="m-inv-slot count">🧪</div>
+        <div class="m-inv-slot count">🪨</div>
+        <div class="m-inv-slot count">🪵</div>
+        <div class="m-inv-slot empty"></div>
+        <div class="m-inv-slot empty"></div>
+        <div class="m-inv-slot">📿</div>
+        <div class="m-inv-slot">🔮</div>
+        <div class="m-inv-slot">🗺️</div>
+        <div class="m-inv-slot count">🍖</div>
+        <div class="m-inv-slot count">💧</div>
+        <div class="m-inv-slot empty"></div>
+        <div class="m-inv-slot">🔑</div>
+        <div class="m-inv-slot">🧲</div>
+        <div class="m-inv-slot">📕</div>
+        <div class="m-inv-slot empty"></div>
+      </div>
+      <div class="m-inv-footer">
+        <div class="m-inv-coin">🪙 12.450</div>
+        <button class="m-inv-close">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MOBILE SKILLS ===== -->
+<div class="label">③ Árvore de Skills</div>
+<div class="frame">
+  <div class="frame-inner">
+    <div class="notch"></div>
+    <div class="home-bar"></div>
+    <div class="m-skill-layout">
+      <div class="m-class-tabs">
+        <div class="m-class-tab active">
+          <span class="icon">🛡️</span>
+          <span class="name" style="color:var(--tembira);">Tembira</span>
+          <span class="role">Tank</span>
+        </div>
+        <div class="m-class-tab">
+          <span class="icon">🔥</span>
+          <span class="name" style="color:var(--karai);">Karaí</span>
+          <span class="role">DPS</span>
+        </div>
+        <div class="m-class-tab">
+          <span class="icon">🌿</span>
+          <span class="name" style="color:var(--paye);">Payé</span>
+          <span class="role">Support</span>
+        </div>
+      </div>
+      <div class="m-skill-scroll">
+        <div class="m-tier-label">⬥ Básico</div>
+        <div class="m-skill-node-row">
+          <div class="m-skill-node learned">⚔️</div>
+          <div class="m-connector active"></div>
+          <div class="m-skill-node learned">😤</div>
+          <div class="m-connector active"></div>
+          <div class="m-skill-node available">🐢</div>
+        </div>
+        <div class="m-tier-label">⬥ Avançado</div>
+        <div class="m-skill-node-row">
+          <div class="m-skill-node locked">🌳</div>
+          <div class="m-connector"></div>
+          <div class="m-skill-node locked">🌋</div>
+          <div class="m-connector"></div>
+          <div class="m-skill-node locked">🦁</div>
+        </div>
+        <div class="m-tier-label">⬥ Mestre</div>
+        <div class="m-skill-node-row">
+          <div class="m-skill-node locked">⚡</div>
+          <div class="m-connector"></div>
+          <div class="m-skill-node locked">🛡️</div>
+        </div>
+      </div>
+      <div class="m-skill-footer">
+        <div><span class="m-sp-text">SP</span> <span class="m-sp-val">5</span></div>
+        <button class="m-learn-btn">Aprender</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MOBILE DIALOG ===== -->
+<div class="label">④ Diálogo com NPC</div>
+<div class="frame">
+  <div class="frame-inner" style="background:linear-gradient(180deg,#0a1628,#0d2818 50%,#1a2a1a);">
+    <div class="notch"></div>
+    <div class="home-bar"></div>
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:80px;opacity:0.06;">🌊</div>
+    <div class="m-dialog-overlay">
+      <div class="m-dialog-panel">
+        <div class="m-quest-badge">!</div>
+        <div class="m-dialog-npc">
+          <div class="m-dialog-portrait">🧙</div>
+          <div>
+            <div class="m-dialog-name">Pajé Itamar</div>
+            <div class="m-dialog-title">Ancião da Aldeia</div>
+          </div>
+        </div>
+        <div class="m-dialog-text">
+          "Jovem guerreiro... as águas do Rio Negro estão perturbadas. A Boiúna Anciosa despertou. Você possui a coragem necessária?"
+        </div>
+        <div class="m-dialog-options">
+          <div class="m-dialog-opt"><span class="m-opt-marker">❶</span> Aceitar missão</div>
+          <div class="m-dialog-opt"><span class="m-opt-marker">❷</span> "Conte-me mais..."</div>
+          <div class="m-dialog-opt"><span class="m-opt-marker">❸</span> "Preciso me preparar."</div>
+          <div class="m-dialog-opt"><span class="m-opt-marker">❹</span> Comerciar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center;font-size:11px;color:var(--text-secondary);padding:24px;">
+  ROBR UI Mobile Mockups v0.1 — Touch targets mínimos de 44×44pt — Safe areas respeitadas
+</div>
+
+</body>
+</html>
