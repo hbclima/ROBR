@@ -41,8 +41,8 @@
 | 0.8 | Economia Básica | ✅ Concluído |
 | 0.B | Lore e Identidade | ✅ Concluído |
 | 1 | Fundação Técnica (core systems) | ✅ Concluído |
-| 2 | Gameplay (combate, IA, skills) | Em andamento |
-| 3 | Mundo (mapas, navegação) | Pendente |
+| 2 | Gameplay (combate, IA, skills) | ✅ Concluído |
+| 3 | Mundo (mapas, navegação) | Em andamento |
 | 4 | Economia (drops, NPC, trade) | Pendente |
 | 5 | Polimento e MVP | Pendente |
 
@@ -124,9 +124,14 @@ onedrive_hermes:ROBR/
   - ServerMain, ClientMain, Party implementados
   - DataController com save/load via DataStore
   - ShopManager, TradeManager, MobManager, InventoryManager (skeletons)
+- [x] **Fase 2 — Gameplay** (combate funcional, IA de mobs, skills, HUD)
+  - IA de Mobs (`AISystem`): Patrulha, Aggro, Fuga (Flee) de mobs passivos, e Retorno à base (Leashing/Tethering) com regeneração de HP e imunidade.
+  - Saci Sombrio (`MOB_006`): Modelo procedimental físico com Gorro Vermelho, comportamento de frenesi a <30% HP (+50% speed e fumaça roxa), e habilidades `Sumiço Corrompido` (invisibilidade + imunidade + dano verdadeiro atrás do alvo) e `Redemoinho Sombrio` (partículas de redemoinho + puxar alvos + dano contínuo).
+  - Combate Funcional (`CombatManager`): Sincronização de HP lógico e físico, validação de alcance de combate (15 studs), bloqueio de dano para mobs imunes.
+  - Feedback Visual (`CombatClient`): Números de dano flutuantes coloridos (amarelo para crítico, vermelho para dano sofrido, branco para causado, cinza "MISS" para esquivas) e partículas locais de impacto.
 
 ### Em andamento:
-- [ ] **Fase 2 — Gameplay** (combate funcional, IA de mobs, skills, HUD)
+- [ ] **Fase 3 — Mundo** (mapas, navegação, spawn points, transições de mapas)
 
 ---
 
@@ -173,7 +178,7 @@ onedrive_hermes:ROBR/
 
 1. ~~Fase 0.8 — Economia Básica~~ — ✅ Concluído
 2. ~~Fase 1 — Fundação Técnica~~ — ✅ Concluído (Roblox Studio)
-3. **Fase 2 — Gameplay** — combate funcional, IA de mobs, skills, HUD
+3. ~~Fase 2 — Gameplay~~ — ✅ Concluído (IA, Combate, VFX de dano)
 4. **Fase 3 — Mundo** — mapas, navegação, spawn points
 5. **Fase 4 — Economia** — NPC shop funcional, trade, drops
 
