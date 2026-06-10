@@ -7,12 +7,14 @@
 
 ## 1. Estrutura de Zonas e Níveis
 
-| Zona | Tipo | Nível dos Mobs |
+| Mapa | Tipo | Nível recomendado |
 |---|---|---|
-| Mapa 1 | inicial | 1–10 |
-| Mapa 2 | intermediária | 10–15 |
-| Mapa 3 | intermediária_avançada | 15–25 |
-| Mapa 4+ | avançada / final | 25+ |
+| Mapa 1 (Ybirá-Puera) | inicial | 1–10 |
+| Mapa 2 (Floresta de Mãe-da-Mata) | intermediária | 10–15 |
+| Mapa 3 (Tavy-Katu) | clareira amaldiçoada | 15–20 |
+| Mapa 4 (Tupã-Mbara) | campo dos ancestrais | 20–25 |
+| Mapa 5 (Templo nas Nuvens) | templo nas alturas | 25–30 |
+| Mapa 6 (Ygara-Mbya) | boss arena | 30 (Boss) / 27–30 |
 
 ---
 

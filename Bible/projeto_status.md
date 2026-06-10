@@ -1,7 +1,7 @@
 # PROJETO ROBR — Status e Contexto
 
 > Arquivo de recuperação de contexto. Leia no início de cada sessão.
-> Última atualização: 2026-06-10
+> Última atualização: 2026-06-12 (placeholders implementados e testados no Studio)
 
 ---
 
@@ -42,8 +42,8 @@
 | 0.B | Lore e Identidade | ✅ Concluído |
 | 1 | Fundação Técnica (core systems) | ✅ Concluído |
 | 2 | Gameplay (combate, IA, skills) | ✅ Concluído |
-| 3 | Mundo (mapas, navegação) | Em andamento |
-| 4 | Economia (drops, NPC, trade) | Pendente |
+| 3 | Mundo (mapas, navegação) | ✅ Concluído |
+| 4 | Economia (drops, NPC, trade) | 🔄 Em andamento |
 | 5 | Polimento e MVP | Pendente |
 
 ### Princípios:
@@ -129,9 +129,24 @@ onedrive_hermes:ROBR/
   - Saci Sombrio (`MOB_006`): Modelo procedimental físico com Gorro Vermelho, comportamento de frenesi a <30% HP (+50% speed e fumaça roxa), e habilidades `Sumiço Corrompido` (invisibilidade + imunidade + dano verdadeiro atrás do alvo) e `Redemoinho Sombrio` (partículas de redemoinho + puxar alvos + dano contínuo).
   - Combate Funcional (`CombatManager`): Sincronização de HP lógico e físico, validação de alcance de combate (15 studs), bloqueio de dano para mobs imunes.
   - Feedback Visual (`CombatClient`): Números de dano flutuantes coloridos (amarelo para crítico, vermelho para dano sofrido, branco para causado, cinza "MISS" para esquivas) e partículas locais de impacto.
+- [x] **Fase 3 — Mundo** (mapas, navegação, portais, minimapa, BGM) — 2026-06-12
+  - **Sincronização dos Mapas (Workspace):** Diretórios renomeados para tupi (YbiráPuera, TavyKatu, TupaMbara, YgaraMbya).
+  - **Infraestrutura de Comunicação (Remotes):** 3 RemoteEvents em ReplicatedStorage.Remotes.Mapa (ChangeMap, LevelTooLow, UpdateMinimapa).
+  - **Configuração Centralizada:** AtlasConfig.lua com specs completas dos 6 mapas (limites, baseplates, spawns, NPCs, portais, atmosfera).
+  - **Lógica do Servidor e Portais:** MapaManager.lua com detecção geométrica de mapa por jogador, debounce server-side (3s), validação autoritativa de nível (ex: nível 25 para Boss Gate no Mapa 6). PortalSetup instancia dinamicamente 10 portais com cores, ParticleEmitter e PortalHandler.
+  - **Otimização de Mobs e Rede:** SpawnSystem.lua refatorado para ler zonas do AtlasConfig e espalhar 37 mobs. ServerMain otimiza IA (apenas mapas com jogadores ativos) e reduz tráfego (thirling >5 studs via FireClientUnreliable).
+  - **Minimapa e Efeitos Visuais/BGM (Client):** MinimapaController.lua — UI circular 140x140px, pontos vermelhos dinâmicos de mobs vivos, transição atmosférica suave com Tweening de névoa, atmosfera, iluminação e BGM.
+  - **Construção Procedural do Mundo:** Chão (Baseplates) com materiais por bioma, Dummy NPCs com BillboardGui, discos de demarcação de spawn, StreamingEnabled global.
+  - **Fábrica de Placeholders 3D (Fase 3.6):** MobPlaceholderFactory executado no Studio — 15/15 mobs gerados em ReplicatedStorage/Mobs/ com geometria única por mob (sapo achatado, cobra segmentada, boto rosa, boitatá de fogo, mula sem cabeça com fogo no pescoço, etc.), Parts coloridos por raridade, Humanoid funcional, BillboardGui com nome, WeldConstraints e Atributos. AISystem refatorado com SpawnPhysicalModel para carregar templates dinamicamente de ReplicatedStorage/Mobs/ com fallback procedimental (evita crashes se pasta for excluída). Limpeza de 6 modelos residuais do Workspace — spawn agora ocorre apenas em runtime. Testes validados: 15/15 templates criados, 37 mobs spawned em 6 mapas, transição/debounce/level check funcionando, throttling de rede ativo, leashing e respawn (~30s) operacionais. Mecânicas da Fase 2 (Saci invisibilidade/teleporte, partículas, leashing) preservadas 100%.
 
 ### Em andamento:
-- [ ] **Fase 3 — Mundo** (mapas, navegação, spawn points, transições de mapas)
+- **Fase 4 — Economia** (iniciada 2026-06-12)
+  - GDD_Fase04_Economia.md criado com especificação completa
+  - DropTable.lua: 75 drops para 15 mobs MVP (todos os ITEM_001 a ITEM_080)
+  - LootManager.lua: geração de drops ao matar mob + notificação cliente
+  - NPCShop.lua: compra (21 itens) e venda (drops de mob via DropTable)
+  - TradeManager.lua: trade P2P com validação server-side
+  - Próximo: implementar no Studio (prompts para IDE agêntica no GDD)
 
 ---
 
@@ -179,8 +194,9 @@ onedrive_hermes:ROBR/
 1. ~~Fase 0.8 — Economia Básica~~ — ✅ Concluído
 2. ~~Fase 1 — Fundação Técnica~~ — ✅ Concluído (Roblox Studio)
 3. ~~Fase 2 — Gameplay~~ — ✅ Concluído (IA, Combate, VFX de dano)
-4. **Fase 3 — Mundo** — mapas, navegação, spawn points
-5. **Fase 4 — Economia** — NPC shop funcional, trade, drops
+5. ~~Fase 3 — Mundo~~ — ✅ Concluído (mapas, portais, minimapa, BGM, 2026-06-12)
+6. **Fase 4 — Economia** — 🔄 Em andamento (GDD + scripts Luau criados, aguardando implementação no Studio)
+7. **Fase 5 — Polimento e MVP** — balanceamento, bug fixes, playtest final
 
 ---
 
