@@ -1,7 +1,7 @@
 # PROJETO ROBR — Status e Contexto
 
 > Arquivo de recuperação de contexto. Leia no início de cada sessão.
-> Última atualização: 2026-06-12
+> Última atualização: 2026-06-12 (atualização: scripts de placeholder de mobs)
 
 ---
 
@@ -137,9 +137,10 @@ onedrive_hermes:ROBR/
   - **Otimização de Mobs e Rede:** SpawnSystem.lua refatorado para ler zonas do AtlasConfig e espalhar 37 mobs. ServerMain otimiza IA (apenas mapas com jogadores ativos) e reduz tráfego (thirling >5 studs via FireClientUnreliable).
   - **Minimapa e Efeitos Visuais/BGM (Client):** MinimapaController.lua — UI circular 140x140px, pontos vermelhos dinâmicos de mobs vivos, transição atmosférica suave com Tweening de névoa, atmosfera, iluminação e BGM.
   - **Construção Procedural do Mundo:** Chão (Baseplates) com materiais por bioma, Dummy NPCs com BillboardGui, discos de demarcação de spawn, StreamingEnabled global.
+  - **Scripts de Placeholder de Mobs:** MobPlaceholderFactory.lua — gera 15 modelos 3D placeholder com Parts coloridos por raridade, Humanoid funcional, BillboardGui e Atributos. AISystem.lua — compatível com os placeholders (patrulha, aggro, leashing, morte).
 
 ### Em andamento:
-- (nenhum — fase 3 concluída)
+- (nenhum)
 
 ---
 
@@ -188,8 +189,9 @@ onedrive_hermes:ROBR/
 2. ~~Fase 1 — Fundação Técnica~~ — ✅ Concluído (Roblox Studio)
 3. ~~Fase 2 — Gameplay~~ — ✅ Concluído (IA, Combate, VFX de dano)
 4. ~~Fase 3 — Mundo~~ — ✅ Concluído (mapas, portais, minimapa, BGM, 2026-06-12)
-5. **Fase 4 — Economia** — NPC shop funcional, trade, drops, loja de Wira'i
-6. **Fase 5 — Polimento e MVP** — balanceamento, bug fixes, playtest final
+5. **Assets de Mobs (placeholders)** — PRÓXIMO: executar MobPlaceholderFactory.CreateAll() no Studio
+6. **Fase 4 — Economia** — NPC shop funcional, trade, drops, loja de Wira'i
+7. **Fase 5 — Polimento e MVP** — balanceamento, bug fixes, playtest final
 
 ---
 
