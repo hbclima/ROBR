@@ -1,7 +1,7 @@
 # PROJETO ROBR — Status e Contexto
 
 > Arquivo de recuperação de contexto. Leia no início de cada sessão.
-> Última atualização: 2026-06-12 (atualização: scripts de placeholder de mobs)
+> Última atualização: 2026-06-12 (placeholders implementados e testados no Studio)
 
 ---
 
@@ -137,7 +137,7 @@ onedrive_hermes:ROBR/
   - **Otimização de Mobs e Rede:** SpawnSystem.lua refatorado para ler zonas do AtlasConfig e espalhar 37 mobs. ServerMain otimiza IA (apenas mapas com jogadores ativos) e reduz tráfego (thirling >5 studs via FireClientUnreliable).
   - **Minimapa e Efeitos Visuais/BGM (Client):** MinimapaController.lua — UI circular 140x140px, pontos vermelhos dinâmicos de mobs vivos, transição atmosférica suave com Tweening de névoa, atmosfera, iluminação e BGM.
   - **Construção Procedural do Mundo:** Chão (Baseplates) com materiais por bioma, Dummy NPCs com BillboardGui, discos de demarcação de spawn, StreamingEnabled global.
-  - **Scripts de Placeholder de Mobs:** MobPlaceholderFactory.lua — gera 15 modelos 3D placeholder com Parts coloridos por raridade, Humanoid funcional, BillboardGui e Atributos. AISystem.lua — compatível com os placeholders (patrulha, aggro, leashing, morte).
+  - **Fábrica de Placeholders 3D (Fase 3.6):** MobPlaceholderFactory executado no Studio — 15/15 mobs gerados em ReplicatedStorage/Mobs/ com geometria única por mob (sapo achatado, cobra segmentada, boto rosa, boitatá de fogo, mula sem cabeça com fogo no pescoço, etc.), Parts coloridos por raridade, Humanoid funcional, BillboardGui com nome, WeldConstraints e Atributos. AISystem refatorado com SpawnPhysicalModel para carregar templates dinamicamente de ReplicatedStorage/Mobs/ com fallback procedimental (evita crashes se pasta for excluída). Limpeza de 6 modelos residuais do Workspace — spawn agora ocorre apenas em runtime. Testes validados: 15/15 templates criados, 37 mobs spawned em 6 mapas, transição/debounce/level check funcionando, throttling de rede ativo, leashing e respawn (~30s) operacionais. Mecânicas da Fase 2 (Saci invisibilidade/teleporte, partículas, leashing) preservadas 100%.
 
 ### Em andamento:
 - (nenhum)

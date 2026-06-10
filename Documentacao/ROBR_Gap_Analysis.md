@@ -69,30 +69,28 @@
 
 ## 2. ASSETS VISUAIS — STATUS
 
-### ❌ NÃO IMPLEMENTADOS (nenhum existe no Studio)
-
-#### 2.1 Modelos 3D de Mobs (15 mobs MVP + 1 hold)
+### 2.1 Modelos 3D de Mobs (15 mobs MVP + 1 hold) — Placeholders implementados ✅
 
 | Mob | Mapa | Dificuldade | Status |
 |-----|------|-------------|--------|
-| Sapo Cururu | Ybirá-Puera | 🟢 | ❌ Não existe |
-| Capivara | Ybirá-Puera | 🟢 | ❌ Não existe |
-| Cobra-d'Água | Ybirá-Puera | 🟡 | ❌ Não existe |
-| Mãe-da-Mata | Floresta Mãe-da-Mata | 🟡 | ❌ Não existe |
-| Boto Cor-de-Rosa | Floresta Mãe-da-Mata | 🟡 | ❌ Não existe |
-| Corpo Seco | Floresta Mãe-da-Mata | 🟡 | ❌ Não existe |
-| Boitatá | Tavy-Katu | 🟡 | ❌ Não existe |
-| Mula Sem Cabeça | Tavy-Katu | 🔴 | ❌ Não existe |
-| Jacaré-Açu | Tavy-Katu | 🟡 | ❌ Não existe |
-| Curupira | Tupã-Mbara | 🟡 | ❌ Não existe |
-| Anhangá | Tupã-Mbara | 🔴 | ❌ Não existe |
-| Onça-Pintada | Tupã-Mbara | 🟡 | 🟡 | ❌ Não existe |
-| Saci Sombrio | Templo Nuvens | 🟡 | ⚠️ Modelo procedimental existe (Fase 2) |
-| Jurupari | Templo Nuvens | 🔴 | ❌ Não existe |
-| Boiúna (Boss) | Ygara-Mbya | 🔴 | ❌ Não existe |
-| Tupã-Jaguaçu | hold | ⚫ | ❌ Não existe (hold) |
+| Sapo Cururu | Ybirá-Puera | 🟢 | ✅ Placeholder (Parts, geometria de sapo) |
+| Capivara | Ybirá-Puera | 🟢 | ✅ Placeholder (Parts, geometria de roedor) |
+| Cobra-d'Água | Ybirá-Puera | 🟡 | ✅ Placeholder (segmentos de esferas) |
+| Mãe-da-Mata | Floresta Mãe-da-Mata | 🟡 | ✅ Placeholder (humanoide com vestido de folhas) |
+| Boto Cor-de-Rosa | Floresta Mãe-da-Mata | 🟡 | ✅ Placeholder (corpo de golfinho rosa) |
+| Corpo Seco | Floresta Mãe-da-Mata | 🟡 | ✅ Placeholder (humanoide esquelético escuro) |
+| Boitatá | Tavy-Katu | 🟡 | ✅ Placeholder (serpente de fogo com Neon) |
+| Mula Sem Cabeça | Tavy-Katu | 🔴 | ✅ Placeholder (cavalo sem cabeça + fogo no pescoço) |
+| Jacaré-Açu | Tavy-Katu | 🟡 | ✅ Placeholder (corpo alongado + mandíbula) |
+| Curupira | Tupã-Mbara | 🟡 | ✅ Placeholder (pequeno humanoide + cabelo vermelho + pés virados) |
+| Anhangá | Tupã-Mbara | 🔴 | ✅ Placeholder (figura sombria com asas de ForceField) |
+| Onça-Pintada | Tupã-Mbara | 🟡 | ✅ Placeholder (felino com manchas pretas) |
+| Saci Sombrio | Templo Nuvens | 🟡 | ✅ Placeholder (uma perna + gorro vermelho Neon) |
+| Jurupari | Templo Nuvens | 🔴 | ✅ Placeholder (humanoide demoníaco com chifres) |
+| Boiúna (Boss) | Ygara-Mbya | 🔴 | ✅ Placeholder (cobra gigante com 8 segmentos) |
+| Tupã-Jaguaçu | hold | ⚫ | ❌ Não existe (hold — pós-MVP) |
 
-**Total: 0/15 mobs com modelo 3D. Apenas Saci Sombrio tem modelo procedimental.**
+**Total: 15/15 mobs com placeholder 3D em ReplicatedStorage/Mobs/. Testados e funcionando em runtime.**
 
 #### 2.2 Modelos 3D de Personagens (Classes)
 
@@ -250,7 +248,8 @@
 |-----------|-------------|--------------|----------|
 | Scripts/ModuleScripts | 30 | 30 | 0 |
 | Remotes | 15 | 15 | 0 |
-| Modelos 3D Mobs | 16 | 1 (Saci) | 15 |
+| Modelos 3D Mobs (placeholders) | 15 | 15 | 0 |
+| Modelos 3D Mobs (finais) | 15 | 0 | 15 |
 | Modelos 3D Personagens | 3 | 0 | 3 |
 | UI/HUD | 16 | 0 | 16 |
 | Ícones 2D | ~60 | 0 | ~60 |
@@ -261,14 +260,14 @@
 | Logo/Identidade | 4 | 0 | 4 |
 | Mapas (estrutura) | 6 | 6 | 0 |
 | Mapa (detalhes ambiente) | ~30 | 0 | ~30 |
-| **TOTAL** | **~241** | **~54** | **~187** |
+| **TOTAL** | **~256** | **~69** | **~172** |
 
 ---
 
 ## 5. PRIORIDADE DE IMPLEMENTAÇÃO
 
 ### Prioridade 1 — Crítico (bloqueia gameplay)
-1. **Modelos placeholder de mobs** — 15 mobs com Parts coloridos (1-2 dias)
+1. ~~**Modelos placeholder de mobs**~~ — ✅ 15/15 implementados e testados
 2. **UI básica** — HP, SP, XP, hotbar de skills (2-3 dias)
 3. **Animações básicas** — idle/walk/attack para mobs (1-2 dias)
 
