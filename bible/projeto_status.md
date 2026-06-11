@@ -1,7 +1,7 @@
 # PROJETO ROBR — Status e Contexto
 
 > Arquivo de recuperação de contexto. Leia no início de cada sessão.
-> Última atualização: 2026-06-12 (placeholders implementados e testados no Studio)
+> Última atualização: 2026-06-12 (Fase 4 — Economia implementada e sincronizada)
 
 ---
 
@@ -43,7 +43,7 @@
 | 1 | Fundação Técnica (core systems) | ✅ Concluído |
 | 2 | Gameplay (combate, IA, skills) | ✅ Concluído |
 | 3 | Mundo (mapas, navegação) | ✅ Concluído |
-| 4 | Economia (drops, NPC, trade) | Pendente |
+| 4 | Economia (drops, NPC, trade) | ✅ Concluído |
 | 5 | Polimento e MVP | Pendente |
 
 ### Princípios:
@@ -139,8 +139,20 @@ onedrive_hermes:ROBR/
   - **Construção Procedural do Mundo:** Chão (Baseplates) com materiais por bioma, Dummy NPCs com BillboardGui, discos de demarcação de spawn, StreamingEnabled global.
   - **Fábrica de Placeholders 3D (Fase 3.6):** MobPlaceholderFactory executado no Studio — 15/15 mobs gerados em ReplicatedStorage/Mobs/ com geometria única por mob (sapo achatado, cobra segmentada, boto rosa, boitatá de fogo, mula sem cabeça com fogo no pescoço, etc.), Parts coloridos por raridade, Humanoid funcional, BillboardGui com nome, WeldConstraints e Atributos. AISystem refatorado com SpawnPhysicalModel para carregar templates dinamicamente de ReplicatedStorage/Mobs/ com fallback procedimental (evita crashes se pasta for excluída). Limpeza de 6 modelos residuais do Workspace — spawn agora ocorre apenas em runtime. Testes validados: 15/15 templates criados, 37 mobs spawned em 6 mapas, transição/debounce/level check funcionando, throttling de rede ativo, leashing e respawn (~30s) operacionais. Mecânicas da Fase 2 (Saci invisibilidade/teleporte, partículas, leashing) preservadas 100%.
 
+- [x] **Fase 4 — Economia** (drops, shops, trade P2P) — 2026-06-12
+  - EconomyRemotesSetup.lua: pasta Remotes/Economy/ com 2 RemoteFunctions (BuyItem, SellItem) + 7 RemoteEvents (Loot, TradeRequest, TradeAccept, TradeUpdate, TradeConfirm, TradeCancel, TradeResult) — idempotente (getOrCreate)
+  - NPCShop.lua: 21 itens (7 consumíveis + 12 equipamentos + 2 acessórios), BuyItem com rollback (débita Wira'i primeiro, reverte se InventoryManager.AddItem falhar), SellItem bloqueia revenda de itens SHOP_* (anti-exploit)
+  - TradeManager.lua: AcceptTrade + ExecuteTrade com validação (proximidade 10 studs, mesmo mapa, inventário, Wira'i), transferência atômica via pcall, cleanup automático (Players.PlayerRemoving)
+  - SpawnSystem.lua: MarcarMorto() chama LootManager.GenerateLoot via pcall
+  - AISystem.lua: OnMobDeath() usa pcall lazy-require do LootManager (evita circular dependency)
+  - LootNotification.lua: notificações empilhadas (máx 5), cores por raridade, fade-in/out
+  - NPCShopUI.lua: janela 520×420, abas Comprar/Vender, tecla E para abrir perto de NPC com Attribute IsShop=true
+  - TradeUI.lua: dois painéis lado a lado, popup de solicitação (auto-expira 15s), sincronia via TradeUpdate
+  - ServerMain_Fase4_Patch.lua + ClientMain_Fase4_Patch.lua
+  - README.md com guia de instalação e checklist de testes
+
 ### Em andamento:
-- (nenhum)
+- **Fase 5 — Polimento e MVP** — balanceamento, bug fixes, playtest final
 
 ---
 
@@ -188,9 +200,8 @@ onedrive_hermes:ROBR/
 1. ~~Fase 0.8 — Economia Básica~~ — ✅ Concluído
 2. ~~Fase 1 — Fundação Técnica~~ — ✅ Concluído (Roblox Studio)
 3. ~~Fase 2 — Gameplay~~ — ✅ Concluído (IA, Combate, VFX de dano)
-4. ~~Fase 3 — Mundo~~ — ✅ Concluído (mapas, portais, minimapa, BGM, 2026-06-12)
-5. **Assets de Mobs (placeholders)** — PRÓXIMO: executar MobPlaceholderFactory.CreateAll() no Studio
-6. **Fase 4 — Economia** — NPC shop funcional, trade, drops, loja de Wira'i
+5. ~~Fase 3 — Mundo~~ — ✅ Concluído (mapas, portais, minimapa, BGM, 2026-06-12)
+6. ~~Fase 4 — Economia~~ — ✅ Concluído (drops, NPC shop, trade P2P, 2026-06-12)
 7. **Fase 5 — Polimento e MVP** — balanceamento, bug fixes, playtest final
 
 ---
