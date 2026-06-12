@@ -1,7 +1,7 @@
 # PROJETO ROBR — Status e Contexto
 
 > Arquivo de recuperação de contexto. Leia no início de cada sessão.
-> Última atualização: 2026-06-12 (Fase 4 — Economia implementada e sincronizada)
+> Última atualização: 2026-06-12 (Fase 4 — Economia implantada no Studio, 27/27 testes passaram)
 
 ---
 
@@ -150,9 +150,13 @@ onedrive_hermes:ROBR/
   - TradeUI.lua: dois painéis lado a lado, popup de solicitação (auto-expira 15s), sincronia via TradeUpdate
   - ServerMain_Fase4_Patch.lua + ClientMain_Fase4_Patch.lua
   - README.md com guia de instalação e checklist de testes
+  - **Implantação no Studio (2026-06-12):** Todos os 10 scripts importados para os containers corretos via MCP. Correções de paths (InventoryManager/DataController -> ServerScriptService), DropTable.lua importado para ReplicatedStorage.Modules.Config.
+  - **Testes de integração: 27/27 asserções passaram (PASSED)** — remotos criados, módulos requeríveis, funções existenciais validadas.
+  - **6 NPCs de loja configurados** com IsShop=true: Curandeiro Ancião (Mapa1), Comerciante da Floresta (Mapa2), Comerciante das Cinzas (Mapa3), Comerciante das Almas (Mapa4), Mercador Celestial (Mapa5), Espírito Curandeiro (Mapa6).
+  - Status: PRONTO para playtest local com 2+ jogadores.
 
-### Em andamento:
-- **Fase 5 — Polimento e MVP** — balanceamento, bug fixes, playtest final
+### Próximo:
+- **Fase 5 — Polimento e MVP** — playtest local (loot, compra, trade P2P), balanceamento, bug fixes
 
 ---
 
